@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - น่านฟ้า วงค์กาศ</title>
+      <style>
+    :root {
+      --primary-color: #4CAF50;
+      --text-color: #333333;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    #about {
+    text-align: center;
+    }
+
+    #about figure {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #about img {
+        display: block;
+        margin: 20px auto;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    body {
+      font-family: 'Kanit', sans-serif;
+      background-color: #f5f5f5;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header, footer {
+      background-color: #ffffff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      color: var(--primary-color);
+    }
+
+    nav {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #1e7e34;
+    }
+
+    section {
+      background-color: #ffffff;
+      margin: 20px 0;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    table, th, td {
+      border: 1px solid #cccccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    form input,
+    form textarea {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    form button {
+      padding: 10px;
+      background-color: var(--primary-color);
+      border: none;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #388e3c;
+    }
+
+    img {
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    iframe {
+      width: 100%;
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    @media screen and (max-width: 600px) {
+      nav {
+        flex-direction: column;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      table {
+        font-size: 14px;
+      }
+    }
+
+    button, a {
+      transition: all 0.3s ease;
+    }
+
+    h1 {
+      animation: fadeInColor 2s ease-in-out;
+    }
+
+    @keyframes fadeInColor {
+      from {
+        opacity: 0;
+        color: #999;
+      }
+
+      to {
+        opacity: 1;
+        color: var(--primary-color);
+      }
+    }
+  </style>
+</head>
+<body>
+
+    <header>
+        <h1>นาย น่านฟ้า วงค์กาศ</h1>
+        <p>การยอมรับความจริงเป็นสิ่งที่เราทำได้ดีที่สุดในสถานการณ์ที่เปลี่ยนเเปลงอะไรไม่ได้เเล้ว</p>
+        <nav>
+            <a href="#about">เกี่ยวกับฉัน</a>
+            <a href="#projects">ผลงาน</a>
+            <a href="#contact">ติดต่อ</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>เกี่ยวกับฉัน</h2>
+            <figure>
+                <img src="IM/MEMEME.png" alt="ภาพของเจ้าของ Portfolio" width="400">
+                <figcaption>รูปภาพตัวแทนของฉัน</figcaption>
+            </figure>
+            <p>สวัสดีครับ</p>
+            <p>ผมคนดีนะ</p>
+        </section>
+
+        <section id="projects">
+            <h2>ผลงานของฉัน</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ชื่อผลงาน</th>
+                        <th>คำอธิบายสั้นๆ</th>
+                        <th>ลิ้งค์สำหรับดูผลงาน</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>โปรเจกต์ที่ 1</td>
+                        <td>HTML 1</td>
+                        <td><a href="LAB02_01_66143206025-8.html">L01</a></td>
+                    </tr>
+                    <tr>
+                        <td>โปรเจกต์ที่ 2</td>
+                        <td>HTML 2</td>
+                        <td><a href="LAB02_02_66143206025-8.html">L02</a></td>
+                    </tr>
+                                        <tr>
+                        <td>โปรเจกต์ที่ 3</td>
+                        <td>HTML 3</td>
+                        <td><a href="LAB02_03_66143206025-8.html">L03</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="skills">
+            <h2>ทักษะที่มี</h2>
+            <ul>
+                <li>HTML</li>
+                <li>Python</li>
+                <li>JAVA</li>
+            </ul>
+        </section>
+
+        <section id="video">
+            <h2>วิดีโอที่น่าสนใจ</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/leihudXxqAY?si=roY5YlEslrj_RF71"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </section>
+
+        <section id="contact">
+            <h2>ติดต่อฉัน</h2>
+            <form action="#" method="post">
+                <label for="name">ชื่อ:</label><br>
+                <input type="text" id="name" name="name"><br><br>
+
+                <label for="email">อีเมล:</label><br>
+                <input type="email" id="email" name="email"><br><br>
+
+                <label for="message">ข้อความ:</label><br>
+                <textarea id="message" name="message" rows="5" cols="30"></textarea><br><br>
+
+                <button type="submit">ส่งข้อความ</button>
+            </form>
+        </section>
+
+        <section id="map">
+            <h2>แผนที่มหาวิทยาลัยเทคโนโลยีราชมงคลล้านนา เชียงราย</h2>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1878.3419589097578!2d99.72583269839475!3d19.683486000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30d7728be0e04759%3A0xadb9be50f31a0e11!2z4Lih4Lir4Liy4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4LmA4LiX4LiE4LmC4LiZ4LmC4Lil4Lii4Li14Lij4Liy4LiK4Lih4LiH4LiE4Lil4Lil4LmJ4Liy4LiZ4LiZ4LiyIOC5gOC4iuC4teC4ouC4h-C4o-C4suC4og!5e0!3m2!1sth!2sth!4v1752590164756!5m2!1sth!2sth"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 น่านฟ้า วงค์กาศ</p>
+    </footer>
+
+</body>
+
+</html>
