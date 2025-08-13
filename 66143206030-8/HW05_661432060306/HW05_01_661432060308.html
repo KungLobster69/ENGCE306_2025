@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #84fab0, #8fd3f4);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: #fff;
+            margin-top: 50px;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 450px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 10px 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #84fab0;
+        }
+
+        button[type="submit"] {
+            background: #4cafef;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background: #1e90ff;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f9f9f9;
+            padding: 8px 12px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        li:hover {
+            background: #f1f1f1;
+        }
+
+        li.completed span {
+            text-decoration: line-through;
+            color: #888;
+            opacity: 0.7;
+        }
+
+        li input[type="checkbox"] {
+            transform: scale(1.3);
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .delete-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .delete-btn:hover {
+            background: #e84141;
+        }
+
+        .task-text {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>My To-Do List</h1>
+        <form id="task-form">
+            <input type="text" id="task-input" placeholder="เพิ่มรายการใหม่..." autocomplete="off" required>
+            <button type="submit">เพิ่ม</button>
+        </form>
+        <ul id="task-list"></ul>
+    </div>
+
+    <script type="module">
+        /**
+         * @typedef {object} Task
+         * @property {number} id
+         * @property {string} text
+         * @property {boolean} isCompleted
+         */
+
+        /** @type {Task[]} */
+        let tasks = [];
+
+        const taskForm = document.getElementById('task-form');
+        const taskInput = document.getElementById('task-input');
+        const taskList = document.getElementById('task-list');
+
+        function loadTasks() {
+            const saved = localStorage.getItem('tasks');
+            if (saved) {
+                tasks = JSON.parse(saved);
+            }
+        }
+
+        function saveTasks() {
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        function addTask(text) {
+            const newTask = {
+                id: Date.now(),
+                text: text,
+                isCompleted: false
+            };
+            tasks.push(newTask);
+            saveTasks();
+        }
+
+        function toggleTaskCompleted(id) {
+            const task = tasks.find(t => t.id === id);
+            if (task) {
+                task.isCompleted = !task.isCompleted;
+                saveTasks();
+            }
+        }
+
+        function deleteTask(id) {
+            tasks = tasks.filter(t => t.id !== id);
+            saveTasks();
+        }
+
+        function renderTasks() {
+            taskList.innerHTML = '';
+            tasks.forEach(task => {
+                const li = document.createElement('li');
+                li.dataset.id = task.id;
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = task.isCompleted;
+
+                const span = document.createElement('span');
+                span.textContent = task.text;
+                span.className = 'task-text';
+
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'delete-btn';
+                deleteBtn.textContent = '×';
+
+                if (task.isCompleted) {
+                    li.classList.add('completed');
+                } else {
+                    li.classList.remove('completed');
+                }
+
+                li.appendChild(checkbox);
+                li.appendChild(span);
+                li.appendChild(deleteBtn);
+                taskList.appendChild(li);
+            });
+        }
+
+        taskForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const text = taskInput.value.trim();
+            if (text) {
+                addTask(text);
+                taskInput.value = '';
+                renderTasks();
+            }
+        });
+
+        taskList.addEventListener('click', (event) => {
+            const li = event.target.closest('li');
+            if (!li) return;
+            const taskId = Number(li.dataset.id);
+
+            if (event.target.type === 'checkbox') {
+                toggleTaskCompleted(taskId);
+            }
+
+            if (event.target.classList.contains('delete-btn')) {
+                deleteTask(taskId);
+            }
+
+            renderTasks();
+        });
+
+        loadTasks();
+        renderTasks();
+    </script>
+</body>
+</html>
