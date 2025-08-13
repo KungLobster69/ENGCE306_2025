@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid #eee;
+        }
+        li.completed span {
+            text-decoration: line-through;
+            color: gray;
+        }
+        .delete-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="text"] {
+            width: 70%;
+            padding: 8px;
+        }
+        button[type="submit"] {
+            padding: 8px 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>My To-Do List</h1>
+        <form id="task-form">
+            <input type="text" id="task-input" placeholder="เพิ่มรายการใหม่..." autocomplete="off" required>
+            <button type="submit">เพิ่ม</button>
+        </form>
+        <ul id="task-list"></ul>
+    </div>
+
+    <script type="module">
+        /** @type {{id:number, text:string, isCompleted:boolean}[]} */
+        let tasks = [];
+
+        const taskForm = document.getElementById('task-form');
+        const taskInput = document.getElementById('task-input');
+        const taskList = document.getElementById('task-list');
+
+        function addTask(text) {
+            const newTask = {
+                id: Date.now(),
+                text: text,
+                isCompleted: false
+            };
+            tasks.push(newTask);
+        }
+
+        function toggleTaskCompleted(id) {
+            const task = tasks.find(t => t.id === id);
+            if (task) {
+                task.isCompleted = !task.isCompleted;
+            }
+        }
+
+        function deleteTask(id) {
+            tasks = tasks.filter(t => t.id !== id);
+        }
+
+        function renderTasks() {
+            taskList.innerHTML = '';
+            tasks.forEach(task => {
+                const li = document.createElement('li');
+                li.dataset.id = task.id;
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = task.isCompleted;
+
+                const span = document.createElement('span');
+                span.textContent = task.text;
+
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'delete-btn';
+                deleteBtn.textContent = 'X';
+
+                if (task.isCompleted) {
+                    li.classList.add('completed');
+                }
+
+                li.appendChild(checkbox);
+                li.appendChild(span);
+                li.appendChild(deleteBtn);
+                taskList.appendChild(li);
+            });
+        }
+
+        taskForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const text = taskInput.value.trim();
+            if (text) {
+                addTask(text);
+                taskInput.value = '';
+                renderTasks();
+            }
+        });
+
+        taskList.addEventListener('click', (event) => {
+            const li = event.target.closest('li');
+            if (!li) return;
+            const taskId = Number(li.dataset.id);
+
+            if (event.target.type === 'checkbox') {
+                toggleTaskCompleted(taskId);
+            }
+
+            if (event.target.classList.contains('delete-btn')) {
+                deleteTask(taskId);
+            }
+
+            renderTasks();
+        });
+    </script>
+
+</body>
+</html>

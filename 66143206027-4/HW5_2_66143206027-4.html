@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quote Generator (Hint)</title>
+    <link rel="stylesheet" href="HW5_2_66143206027-4.css">
+</head>
+<body>
+
+    <div class="quote-container">
+        <div class="quote-wrapper">
+            <blockquote id="quote-text">
+                กดปุ่มเพื่อเริ่มสุ่มคำคม...
+            </blockquote>
+            <cite id="quote-author"></cite>
+        </div>
+        <button id="new-quote-btn">สุ่มคำคมใหม่</button>
+    </div>
+
+    <script type="module">
+      
+        const quotes = [
+            { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+            { text: "Strive not to be a success, but rather to be of value.", author: "Albert Einstein" },
+            { text: "The mind is everything. What you think you become.", author: "Buddha" },
+            { text: "Your time is limited, so don’t waste it living someone else’s life.", author: "Steve Jobs" }
+        ];
+
+        let unusedQuotes = [...quotes]; 
+
+        const quoteTextElement = document.getElementById('quote-text');
+        const quoteAuthorElement = document.getElementById('quote-author');
+        const newQuoteBtn = document.getElementById('new-quote-btn');
+
+        function getRandomQuote() {
+            if (unusedQuotes.length === 0) {
+                unusedQuotes = [...quotes]; ม่
+            }
+            const randomIndex = Math.floor(Math.random() * unusedQuotes.length);
+            return unusedQuotes.splice(randomIndex, 1)[0];
+        }
+
+        function displayQuote(quote) {
+            quoteTextElement.textContent = quote.text;
+            quoteAuthorElement.textContent = `— ${quote.author}`;
+        }
+
+        function showNewQuote() {
+            const newQuote = getRandomQuote();
+            displayQuote(newQuote);
+        }
+
+        newQuoteBtn.addEventListener('click', showNewQuote);
+
+        
+        showNewQuote();
+    </script>
+</body>
+</html>
