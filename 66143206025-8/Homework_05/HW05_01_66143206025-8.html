@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <link rel="stylesheet" href="HW05_01_66143206025-8.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>My To-Do List</h1>
+        <form id="task-form">
+            <input type="text" id="task-input" placeholder="เพิ่มรายการใหม่..." autocomplete="off" required>
+            <button type="submit">เพิ่ม</button>
+        </form>
+        <ul id="task-list">
+            <!-- Tasks will be rendered here by script -->
+        </ul>
+    </div>
+    <script type="module">
+        interface Task {
+            id: number;
+            text: string;
+            isCompleted: boolean;
+        }
+
+        let tasks: Task[] = [];
+
+        const taskForm = document.getElementById('task-form') as HTMLFormElement;
+        const taskInput = document.getElementById('task-input') as HTMLInputElement;
+        const taskList = document.getElementById('task-list') as HTMLUListElement;
+
+        function addTask(text: string): void {
+            const newTask: Task = {
+                id: Date.now(),
+                text: text,
+                isCompleted: false
+            };
+            tasks.push(newTask);
+        }
+
+        function toggleTaskCompleted(id: number): void {
+            const task = tasks.find(t => t.id === id);
+            if (task) task.isCompleted = !task.isCompleted;
+        }
+
+        function deleteTask(id: number): void {
+            tasks = tasks.filter(t => t.id !== id);
+        }
+
+        function renderTasks(): void {
+            taskList.innerHTML = '';
+            tasks.forEach(task => {
+                const li = document.createElement('li');
+                li.dataset.id = task.id.toString();
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = task.isCompleted;
+
+                const span = document.createElement('span');
+                span.textContent = task.text;
+
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'delete-btn';
+                deleteBtn.textContent = 'X';
+
+                if (task.isCompleted) li.classList.add('completed');
+
+                li.appendChild(checkbox);
+                li.appendChild(span);
+                li.appendChild(deleteBtn);
+                taskList.appendChild(li);
+            });
+        }
+
+        taskForm.addEventListener('submit', (event: SubmitEvent) => {
+            event.preventDefault();
+            const text = taskInput.value.trim();
+            if (text) {
+                addTask(text);
+                taskInput.value = '';
+                renderTasks();
+            }
+        });
+
+        taskList.addEventListener('click', (event: MouseEvent) => {
+            const target = event.target as HTMLElement;
+            const li = target.closest('li');
+            if (!li) return;
+
+            const taskId = Number(li.dataset.id);
+
+            if ((target as HTMLInputElement).type === 'checkbox') {
+                toggleTaskCompleted(taskId);
+            }
+            if (target.classList.contains('delete-btn')) {
+                deleteTask(taskId);
+            }
+            renderTasks();
+        });
+    </script>
+
+</body>
+
+</html>
