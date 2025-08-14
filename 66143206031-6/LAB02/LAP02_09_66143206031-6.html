@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <style> 
+        body { font-family: sans-serif; margin: 0; }
+        header, footer { background: #f4f4f4; padding: 1em; text-align: center; }
+        nav { background: #333; padding: 0.5em; text-align: center;}
+        nav a { color: white; padding: 1em; }
+        main { padding: 1em; }
+    </style>
+  <meta charset="UTF-8">
+  <title>Simple Form</title>
+  <style> body { font-family: sans-serif; } </style>
+</head>
+<body>
+  <h2>แบบฟอร์มลงทะเบียน</h2>
+  <form action="/submit-form" method="post">
+    <label for="fullName">ชื่อ-นามสกุล:</label><br>
+    <input type="text" id="fullName" name="fullName" required><br><br>
+
+    <label for="email">อีเมล:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <input type="submit" value="ส่งข้อมูล">
+  </form>
+</body>
+</html>

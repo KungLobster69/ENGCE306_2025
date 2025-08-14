@@ -1,0 +1,171 @@
+/* ---------- Custom Properties ---------- */
+figure {
+  text-align: center;
+}
+
+/* จัดหัวข้อให้ตรงกลาง */
+
+
+:root {
+    --primary-color: #2c3e50;
+    --text-color: #ffffff;
+}
+
+/* ---------- Base Styles ---------- */
+body {
+    font-family: 'Prompt', sans-serif;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* ---------- Layout Container ---------- */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ---------- Header & Footer ---------- */
+header, footer {
+    background-color: #34495e;
+    padding: 20px;
+    text-align: center;
+}
+
+/* ---------- Navigation ---------- */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: #ecf0f1;
+    padding: 8px 12px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav a:hover {
+    background-color: #1abc9c;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* ---------- Profile Image ---------- */
+figure img {
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+figure img:hover {
+    transform: scale(1.05);
+}
+
+/* ---------- Table Styling ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #bdc3c7;
+    text-align: left;
+}
+
+thead {
+    background-color: #95a5a6;
+    color: white;
+}
+
+/* ---------- Form Styling ---------- */
+form {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 2px solid #bdc3c7;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+form input:focus,
+form textarea:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #2980b9;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #1abc9c;
+}
+
+/* ---------- Animation ---------- */
+h1 {
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- Responsive (Mobile First) ---------- */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    iframe {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    table, th, td {
+        font-size: 14px;
+    }
+}
