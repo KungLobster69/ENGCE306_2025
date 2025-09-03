@@ -1,0 +1,16 @@
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: sans-serif;
+    line-height: 1.6;
+}
+/* (Optional) เพิ่มระยะห่างระหว่าง Section */
+section {
+    margin-bottom: 2rem;
+}
+
+header, footer {
+    text-align: center;    /* จัดข้อความกึ่งกลางในแนวนอน */
+    margin-bottom: 2rem;   /* เพิ่มระยะห่างด้านล่าง */
+}
