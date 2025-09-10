@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+  flex-direction: column;  /* เรียงแนวตั้ง */
+  justify-content: center; /* จัดกลางแนวตั้ง */
+  align-items: center;     /* จัดกลางแนวนอน */
+  height: 100vh;           /* ให้สูงเต็มจอ */
+  text-align: center;      /* ข้อความอยู่ตรงกลาง */
+}
