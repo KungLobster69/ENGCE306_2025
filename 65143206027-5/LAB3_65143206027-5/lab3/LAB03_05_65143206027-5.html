@@ -1,28 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        .profile-card {width: 300px; margin: 50px auto; border: 1px solid #ddd; border-radius: 15px;box-shadow: 0.4px 8px rgba(0, 0, 0, 0.1); text-align: center;}
-        img {width: 120px; height: 120px;border-radius: 50%;border-color: red;}
-        .k {font-style: italic;color: orange;font-size: 18px;font-weight: 100;}
-        .job-title {color: #777;font-style: italic;}
-        .bio {font-size: ;}
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile Card</title>
+  <style>
+    .profile-card {
+      width: 300px;
+      margin: 50px auto;
+      border: 1px solid #ddd;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 20px;
+      background-color: #fff;
+    }
+
+    img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 2px solid red;
+      object-fit: cover;
+    }
+
+    .k {
+      font-style: italic;
+      color: orange;
+      font-size: 18px;
+      font-weight: 100;
+      margin: 10px 0;
+    }
+
+    .job-title {
+      color: #777;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    .bio {
+      font-size: 16px;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-    <div class="profile-card">
-        <img src="https://i.pinimg.com/736x/03/c8/59/03c859f687b4e013c272b2538741b0fe.jpg" alt="error">
-        <h1 class="k">นาย ปราบเซียน หน่อหล้า</h1>
-        <p class="job-title">
-            คนเขียนเว็บ
-        </p>
-
-        <p class="bio">
-            ชื่อเกมชอบดูหนังกินเหล้า
-        </p>
-    </div>
+  <div class="profile-card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyxLoaBffAytJidI2ABwnJ9eIDyIYmmAKwf0-6pwNzYgfaGqWA" alt="Profile Image" />
+    <h1 class="k">นาย กัมปนาท ใหม่นา</h1>
+    <p class="job-title">คนเขียนเว็บ</p>
+    <p class="bio">ดัง เฮ้โบว๋</p>
+  </div>
 </body>
 </html>
