@@ -1,0 +1,17 @@
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: sans-serif;
+  line-height: 1.6;
+  text-align: center;
+}
+
+section {
+  margin-bottom: 2rem; 
+}
+
+header,footer{
+  text-align: center;
+  margin-bottom: 2rem;
+}
