@@ -1,0 +1,60 @@
+//import Header from "./components/็Header"
+//import HeroSection from "./components/HeroSection";
+//import AboutMe from "./components/AboutMe";
+//import ProjectList from "./components/ProjectList";
+//import Footer from "./components/Footer";
+//import './App.css';
+//function App (){
+  //return (
+  //<div className="container">
+    //<Header/>
+    //<main>
+      //<HeroSection/>
+      //<AboutMe/>
+      //<ProjectList/>
+    //</main>
+   // <Footer/>
+  //</div>
+
+  //);
+//}
+//export default App;
+
+import ProjectCard from './components/ProjectCard'; // 1. Import เข้ามา
+
+// 2. เตรียมข้อมูล (ปกติข้อมูลจะมาจาก API แต่ตอนนี้เราลองเขียนค่าคงที่ไปก่อน)
+const projects = [
+    {
+        id: 1,
+        title: 'Portfolio Website',
+        description: 'Built with React and TypeScript for ENGE306.',
+        imageUrl: 'https://placehold.co/600x400?text=Project+1'
+    },
+    {
+        id: 2,
+        title: 'Database Management System',
+        description: 'A project from ENGE216 course.',
+        imageUrl: 'https://placehold.co/600x400?text=Project+2'
+    }
+];
+
+function ProjectList() {
+    return (
+        <section id="projects">
+            <h2>My Projects</h2>
+            <div>
+                {/* 3. ใช้ .map() เพื่อสร้าง ProjectCard จากข้อมูล */}
+                {projects.map(project => (
+                    <ProjectCard
+                        key={project.id}
+                        title={project.title}
+                        description={project.description}
+                        imageUrl={project.imageUrl}
+                    />
+                ))}
+            </div>
+        </section>
+    );
+}
+
+export default ProjectList;
